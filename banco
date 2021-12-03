@@ -1,0 +1,66 @@
+create database departamentos; 
+use  departamentos;
+create table departamento( 
+id int auto_increment,
+nome enum ('logistica','financeiro','pessoal','compras'),
+localizao varchar(30),
+codigofuncionariogerente int,
+primary key (id),
+foreign key (codigofuncionariogerente) 
+references funcionario (cod_funcionario) ) ;
+use departamentos;
+
+
+select (primeiroNome,segundoNome) from funcionario order by 'segundoNome'; 
+insert into  funcionario values
+('1','julia', 'monsores', 'andre', '2003-10-15','000000000000', '0000000000', 'madruga','000000000', 'vassouras', '00000000000','1000.00'),
+('2','mariana', 'monsores', 'andre', '2000-8-10','000000000000', '0000000000', 'madruga','000000000', 'vassouras', '00000000000','0900.45'),
+('3','lisa', 'costa', 'silva', '2003-10-15','000000000000', '0000000000', 'centro','000000000', 'barra do pirai', '00000000000', '1298.76'),
+('4','barbara', 'lima', 'matau', '2005-04-29','000000000000', '0000000000', 'madruga','000000000', 'vassouras', '00000000000','3300.98'),
+('5','bianca', 'moraes','silva','2004-09-03',' 000000000000', '0000000000', 'centro', '000000000', 'miguel pereia','00000000000','0550.23'),
+('6','matheus', 'carlos', 'costa', '2007-08-02','000000000000', '0000000000', 'subida','000000000', 'vassouras', '00000000000','4658.12'),
+('7','lucas', 'mendes', 'andre', '2000-8-10','000000000000', '0000000000', 'madruga','000000000', 'vassouras', '00000000000','1436.65'),
+('8','joana', 'costa', 'lourenço', '2003-10-15','000000000000', '0000000000', 'centro','000000000', 'barra pirai', '00000000000','5964.43'),
+('9','miguel', 'soares', 'vinicius', '2000-8-10','000000000000', '0000000000', 'madruga','000000000', 'vassouras', '00000000000', '1200.00'),
+('10', 'carlos','jose','medeiros','1998-05-17',    '000000000000', '0000000000','morro',   '000000000','mendes',     '00000000000','1230.00');
+
+select *from funcionario ;
+
+select primeiroNome,segundoNome from funcionario order by segundoNome;
+select * from funcionario order by cidade;
+SELECT * FROM Funcionario WHERE salario > 1000 ORDER BY primeiroNome, segundoNome, ultimoNome;
+select DataNasci,primeiroNome from  funcionario order by DataNasci desc, primeiroNome;
+
+select*from departamento; 
+
+UPDATE funcionario
+SET primeiroNome= 'SSH' , segundoNome= 'O Shell' , UltimoNome='Seguro' 
+WHERE id = '1';
+
+UPDATE funcionario 
+SET salario= '1500.00'
+WHERE salario='1200.00'; 
+
+DELETE FROM funcionario
+WHERE id = 6;
+
+SET SQL_SAFE_UPDATES=0;
+
+
+ use departamentos ; 
+create table funcionario (
+id int auto_increment,
+primeiroNome varchar(10) not null, 
+segundoNome varchar(10) not null , 
+UltimoNome varchar(12) not null ,
+DataNasci date not null,
+cpf numeric (12)  not null,
+rg numeric (10) not null,
+endereco varchar(50) not null,
+cep numeric (9)   not null,
+cidade varchar(30),
+fone numeric (11),
+salario decimal (6,2) not null,
+primary key (id)
+ ); 
+ 
